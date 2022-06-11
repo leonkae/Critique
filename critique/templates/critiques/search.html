@@ -1,0 +1,23 @@
+{% extends 'critiques/base.html' %} {% block content %}
+
+<a href="{% url 'home' %}">back</a>
+<div class="container">
+  <h1>search here</h1>
+
+  {% if searched_object %}
+  <h2>found {{searched_object|length}} of searched {{message}}</h2>
+  {% else %}
+  <h2>{{message}}</h2>
+  {% endif %} {% for image in searched_object %}
+  <p>{{image.profile}}</p>
+  {% if image.image %}
+  <img src="{{ image.image.url }}" alt="img.." />
+  {% endif %}
+  <p>{{image.projectname}}</p>
+  <p>{{image.urls}}</p>
+  <a href="{{image.urls}}">project link</a>
+  <p>{{image.description}}</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

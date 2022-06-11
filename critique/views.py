@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
@@ -8,7 +8,8 @@ from .models import *
 # Create your views here.
 
 def home(request):
-    return render(request,'critiques/home.html')
+    images=Project.objects.order_by("-created").all()
+    return render(request,'critiques/home.html', {'images':images})
 
 def signup(request):
     ''' signup view '''
@@ -49,3 +50,54 @@ def login_page(request):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+def addprofile(request):
+    current_user=request.user
+    
+    if request.method == 'POST':
+        pro_picture = request.FILES.get('pro_picture')
+        profile = Profile.objects.get(user__id=request.user.id)
+        profile.bio = request.POST['bio']
+        profile.pro_picture = pro_picture
+        profile.save()
+    return render(request,'critiques/addprofile.html')
+
+def profile(request):
+    current_user = request.user
+    user_profile = get_object_or_404(Profile, user=current_user)
+    images = Project.objects.order_by("-created").filter(profile__user=request.user)
+    image_length =(len(images))
+    
+    return render(request,'critiques/profile.html',{'user_profile':user_profile, 'images':images,'image_length':image_length})
+
+def create(request):
+    current_user = request.user
+    user_profile = get_object_or_404(Profile, user=current_user)
+    
+    if request.method == 'POST':
+        data = request.POST
+        image =request.FILES.get('image')
+        print('data',data)
+        print('image', image)
+        
+        project = Project.objects.create(
+            image = image,
+            projectname = data['projectname'],
+            description = data['description'],
+            profile = user_profile,
+            urls = data['urls'],
+        )
+        project.save()
+        return redirect('home')
+    return render(request, 'critiques/create.html')
+
+def search(request):
+    
+    
+    if request.method == "POST":
+        searched = request.POST['searched']
+        searched_object = Project.objects.filter(profile__user__username__icontains=searched)
+        
+    return render(request, 'critiques/search.html',{'searched_object':searched_object}) 
+    
+    

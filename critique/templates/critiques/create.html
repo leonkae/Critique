@@ -1,0 +1,50 @@
+{% extends 'critiques/base.html' %} {% block content %}
+
+<div class="container">
+  <h1>create</h1>
+</div>
+<div class="card">
+  <form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group m-4">
+      <label>Project name</label>
+      <input name="projectname" type="text" class="form-control" required />
+    </div>
+
+    <div class="form-group m-4">
+      <label>About</label>
+      <input name="description" type="text" class="form-control" required />
+    </div>
+
+    <div class="form-group m-4">
+      <label> Repo project link</label>
+      <input name="urls" type="url" class="form-control" />
+    </div>
+
+    <div class="form-group m-4">
+      <label>Project Screenshot</label>
+      <input name="image" type="file" class="form-control-file" required />
+    </div>
+
+    <button type="submit" class="submit m-4">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="26"
+        height="26"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-upload"
+      >
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+    </button>
+  </form>
+</div>
+
+{% endblock %}

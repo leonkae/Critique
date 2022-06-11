@@ -1,0 +1,16 @@
+{% extends 'critiques/base.html' %} {% block content %}
+
+    <div class="container">
+        <a href="{% url 'home' %}">back</a>
+       <h1>my Profile</h1> 
+
+       <p>{{user_profile.user.username}}</p>
+       <p>bio: {{user_profile.bio}}</p>
+
+       <img src="{{user_profile.pro_picture.url}}" alt="pro pic">
+
+
+    </div>
+
+
+{% endblock %}
