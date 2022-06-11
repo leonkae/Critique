@@ -1,12 +1,62 @@
 {% extends 'critiques/base.html' %} {% block content %}
 
+<div class="title">
+  <h1>Critique</h1>
+</div>
+
 <div class="container-fluid">
   <h1>this is signup</h1>
   <form method="POST" action="">
-    {% csrf_token %} {{form.as_p}}
+    {% csrf_token %}
 
-    <input type="submit" name="Create User">
+    <div class="mb-3">
+      <label for="InputUsername" class="form-label">User name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        id="InputUsername"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="InputUsername" class="form-label">Email</label>
+      <input type="text" class="form-control" name="email" id="InputUsername" />
+    </div>
+
+    <div class="mb-3">
+      <label for="InputPassword" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="Password"
+        name="password1"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="InputPassword" class="form-label">Confirm Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="Password"
+        name="password2"
+      />
+    </div>
+    <input type="submit" name="Create User" />
   </form>
+
+  <div class="error">
+    <p>{{form.errors}}</p>
+  </div>
+
+  <div class="border-top pt-3 mt-2">
+    <small class="text-muted">
+      Do you have an account ?
+      <a class="ml-2" href="{% url 'login' %}">Login</a>
+    </small>
+  </div>
+  
 </div>
 
 {% endblock %}

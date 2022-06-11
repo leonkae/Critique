@@ -23,7 +23,12 @@ def signup(request):
                 created_user = form.save()
                 Profile.objects.get_or_create(user=created_user)
                 messages.success(request, 'Account for' + username + 'created succesfully')
-                return redirect('home')   
+                return redirect('login')   
              
     context ={'form': form}
     return render(request, 'critiques/signup.html', context)
+
+def login(request):
+    '''login view'''
+    
+    return render(request,'critiques/login.html')
