@@ -3,11 +3,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
 from django.contrib import messages
+from .models import Reviews as ReviewsModel
 from .models import *
 
 # Create your views here.
 
 def home(request):
+    
     images=Project.objects.order_by("-created").all()
     return render(request,'critiques/home.html', {'images':images})
 
@@ -92,12 +94,26 @@ def create(request):
     return render(request, 'critiques/create.html')
 
 def search(request):
-    
-    
     if request.method == "POST":
         searched = request.POST['searched']
         searched_object = Project.objects.filter(profile__user__username__icontains=searched)
         
     return render(request, 'critiques/search.html',{'searched_object':searched_object}) 
     
+
+def review(request,pk):
     
+    if request.method =='POST':
+        data=request.POST
+        
+        project = Project.objects.get(pk=pk)
+        new_review = ReviewsModel.objects.create(
+            user=request.user,
+            text=request.POST['review'],
+            user_post = project, 
+        )
+        project.reviews.add(new_review)
+        project.save()
+        return redirect('home')
+    
+    return render(request, 'critiques/review.html')

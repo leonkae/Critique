@@ -9,7 +9,8 @@ urlpatterns = [
     path('addprofile/',views.addprofile, name='addprofile'),
     path('profile/', views.profile, name='profile'),
     path('create/',views.create, name='create'),
-    path('search/', views.search, name='search' )
+    path('search/', views.search, name='search' ),
+    path('review/<str:pk>/', views.review, name='review'),
     
 ]
 
