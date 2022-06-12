@@ -1,3 +1,5 @@
+from audioop import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -117,3 +119,12 @@ def review(request,pk):
         return redirect('home')
     
     return render(request, 'critiques/review.html')
+
+def like(request, pk):
+    if request.method == 'POST':
+        project = get_object_or_404(Project, id=pk)    
+        project.likes.add(request.user)
+        print(project)
+        
+        return HttpResponseRedirect(reverse('home'))
+    return redirect('home')
