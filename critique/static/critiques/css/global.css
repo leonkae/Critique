@@ -1,7 +1,21 @@
-.test-info{
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+.content-wrapper{
     border: 3px solid wheat;
-    margin-top: 200px;
-    
+    margin-top: 200px;    
+}
+
+.landing-page{
+    border: 3px solid red;
+    margin-top: 100px;
+}
+
+.content-wrapper img{
+    width: 100px;
+    height: 100px;
 }
 .user-name{
     color: white;
