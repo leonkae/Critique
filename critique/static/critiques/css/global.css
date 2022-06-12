@@ -1,5 +1,10 @@
 .test-info{
     border: 3px solid wheat;
+    margin-top: 200px;
+    
+}
+.user-name{
+    color: white;
 }
 
 .title{
