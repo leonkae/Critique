@@ -11,7 +11,6 @@ urlpatterns = [
     path('create/',views.create, name='create'),
     path('search/', views.search, name='search' ),
     path('review/<str:pk>/', views.review, name='review'),
-    path('like/<int:pk>/,', views.like, name='like'),
-    
+    path('like/<int:pk>/,', views.like, name='like'),   
 ]
 
