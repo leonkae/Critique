@@ -1,17 +1,25 @@
 {% extends 'critiques/base.html' %} {% block content %}
 <!-- contaner  -->
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col">
-                <a href="{%url 'home' %}" class="btn btn-dark mt-5 my-3">Back</a>
-                <div style="height:90vh;">
-                    
-                    <img style="max-width: 100%; max-height: 100%;"
-                    src="{{images.image.url}}" alt="card image cap">
-                    <p>{{images.description}}</p>
-                </div>
-            </div>
-        </div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col">
+      <a href="{%url 'home' %}" class="btn btn-dark mt-5 my-3">Back</a>
+      <div style="height: 90vh">
+        <img
+          style="max-width: 100%; max-height: 100%"
+          src="{{images.image.url}}"
+          alt="card image cap"
+        />
+
+        <p>{{images.description}}</p>
+        <p>{{images.profile}}</p>
+
+        <p>{{images.projectname}}</p>
+        <p>{{images.urls}}</p>
+        <a href="{{image.urls}}">project link</a>
+      </div>
     </div>
+  </div>
+</div>
 
 {% endblock %}
