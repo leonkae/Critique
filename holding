@@ -35,3 +35,11 @@
 
   {
          
+
+
+    <p>{{image.profile}}</p>
+
+    <p>{{image.projectname}}</p>
+    <p>{{image.urls}}</p>
+    <a href="{{image.urls}}">project link</a>
+    <p>{{image.description}}</p>
