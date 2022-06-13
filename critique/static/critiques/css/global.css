@@ -3,9 +3,24 @@
   padding: 0%;
 }
 
+/* home styles */
+
 .content-wrapper {
   border: 3px solid wheat;
   margin-top: 20px;
+}
+.navbar-brand {
+  font-size: 6vh;
+  font-family: "Grand Hotel", cursive;
+  background: linear-gradient(to right, red, dodgerblue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.navbar-user{
+  text-decoration: none;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  font-size: larger;
 }
 
 #landing-page {
@@ -14,12 +29,13 @@
   height: 50vh;
   /* background-image: url('/critique/static/photo-1511634829096-045a111727eb.jpeg') */
 }
+
 #landing-page h1 {
   color: white;
   text-align: center;
   padding-top: 10vh;
   font-family: "Grand Hotel";
-  font-size: 13vh;
+  font-size: 15vh;
 }
 
 .project-title {
@@ -42,11 +58,26 @@
   text-align: center;
 }
 
-.card-body img{
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
+.card-body img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
-.card-body .date{
+.card-body .date {
   margin-bottom: 2px;
+}
+
+.card-body a {
+  text-decoration: none;
+  color: black;
+}
+
+.line {
+  border-bottom: 4px solid;
+  display: block;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 5px;
+  margin-top: 13px;
+  background: linear-gradient(to right, blue, red);
 }

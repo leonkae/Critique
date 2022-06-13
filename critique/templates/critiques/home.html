@@ -1,13 +1,9 @@
 {% extends 'critiques/base.html' %} {% block content %}
-<nav class="navbar navbar-expand-lg bg-dark mb-5 fixed-top">
+<nav class="navbar navbar-fluid-lg bg-light mb-5 fixed-top">
   <!-- conatainer -->
   <div class="container">
-    <a
-      href="{% url 'home'%}"
-      class="navbar-brand"
-      style="font-size: 5vh; font-family: 'Grand Hotel', cursive; color: white"
-      >Critique</a
-    >
+    <a href="{% url 'profile' %}" class="navbar-user">{{ request.user }}</a>
+    <a href="{% url 'home'%}" class="navbar-brand">Critique</a>
 
     <!-- navbar toggler -->
     <button
@@ -67,19 +63,19 @@
         </div>
       </form>
 
-      <div class="create me-3">
+      <div class="create me-3 m-2">
         <a href="{% url 'create' %}"
           ><button class="btn btn-primary">Submit Project</button></a
         >
       </div>
 
-      <div class="create me-3">
+      <div class="create me-3 m-2" >
         <a href="{% url 'signup' %}"
           ><button class="btn btn-primary">SignUp</button></a
         >
       </div>
 
-      <div class="profile me-2">
+      <div class="profile me-2 m-2">
         <a href="{% url 'profile' %}">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +95,7 @@
         </a>
       </div>
 
-      <div class="update profile me-2">
+      <div class="update profile me-2 m-2">
         <a href="{% url 'addprofile' %}">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -121,7 +117,7 @@
         </a>
       </div>
 
-      <div class="login me-2">
+      <div class="login me-2 m-2">
         <a href="{% url 'login' %}">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +138,7 @@
         </a>
       </div>
 
-      <div class="logout">
+      <div class="logout m-2">
         <a href="{% url 'logout' %}">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -201,15 +197,39 @@
               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
               <circle cx="12" cy="12" r="3"></circle></svg
           ></a>
+
+          <a href="{% url 'review' image.pk %}"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-feather"
+            >
+              <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+              <line x1="16" y1="8" x2="2" y2="22"></line>
+              <line x1="17.5" y1="15" x2="9" y2="15"></line></svg
+          ></a>
+
           <br />
+          <span class="line"></span>
+          <small><span>stars</span> {{image.likes.all.count}}</small>
           <br />
           <small class="date mt-2">{{image.created|timesince}}</small>
           <br />
           <small>
-            <span
-              ><img src="{{user_profile.pro_picture.url}}" alt="pro pic"</span
-            >
-            {{image.profile}} | <span> {{image.projectname}}</span></small
+            <a href="{% url 'profile' %}">
+              <span>
+                <img src="{{user_profile.pro_picture.url}}" alt="pro pic"</span
+              >
+            </a>
+
+            <a href="{% url 'profile' %}">{{image.profile}}</a> | <span>{{image.projectname}}</span></small
           >
         </div>
       </div>
