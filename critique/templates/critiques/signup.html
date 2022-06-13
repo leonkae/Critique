@@ -5,7 +5,9 @@
 </div>
 
 <div class="container-fluid">
-  <h1>this is signup</h1>
+  <div class="signup-text">
+    <h1>signup here...</h1>
+  </div>
   <form method="POST" action="">
     {% csrf_token %}
 
@@ -43,7 +45,11 @@
         name="password2"
       />
     </div>
-    <input type="submit" name="Create User" />
+    <!-- <input type="submit" name="Create User" /> -->
+
+    <button type="submit" class="btn btn-primary" name="Create User">
+      SignUp
+    </button>
   </form>
 
   <div class="error">
@@ -56,7 +62,6 @@
       <a class="ml-2" href="{% url 'login' %}">Login</a>
     </small>
   </div>
-  
 </div>
 
 {% endblock %}

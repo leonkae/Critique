@@ -54,8 +54,19 @@
 }
 
 .title {
-  border: 3px solid red;
   text-align: center;
+  font-family: "Grand Hotel", cursive;
+  margin-top: 150px;
+}
+
+.title h1 {
+  font-size: 12vh;
+}
+.login-text h1 {
+  font-family: "Poppins", sans-serif;
+}
+.signup-text h1 {
+  font-family: "Poppins", sans-serif;
 }
 
 .card-body img {
@@ -172,9 +183,8 @@
 }
 .search-info {
   font-family: "Poppins", sans-serif;
-  
 }
-.search-info h1{
-  font-weight: bold;
 
+.search-info h1 {
+  font-weight: bold;
 }
