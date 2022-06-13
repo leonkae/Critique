@@ -13,7 +13,10 @@ from .models import *
 def home(request):
     '''home view''' 
     images=Project.objects.order_by("-created").all()
-    return render(request,'critiques/home.html', {'images':images})
+    current_user = request.user
+    user_profile = get_object_or_404(Profile, user=current_user)
+    
+    return render(request,'critiques/home.html', {'images':images, 'user_profile':user_profile})
 
 def signup(request):
     ''' signup view '''
@@ -50,6 +53,10 @@ def login_page(request):
             else:
                 messages.info(request, 'Check username or password !')
         return render(request,'critiques/login.html')
+    
+def viewproject(request,pk):
+    images = Project.objects.get(id=pk)
+    return render(request,'critiques/photo.html',{'images':images})
 
 @login_required(login_url='login') 
 def logout_user(request):

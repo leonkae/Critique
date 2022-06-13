@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row">
+    {% for image in images %}
+    <p>{{image.profile}} <span>{{image.projectname}}</span></p>
+    <p>{{image.description}}</p>
+    <p>{{image.urls}}</p>
+    <a href="{{image.urls}}">project link</a>
+    <form action="{% url 'like' image.pk %}">
+      {% csrf_token %}
+      <button
+        type="submit"
+        ,
+        name="project_id"
+        ,
+        value="{{ project.id }}"
+        ,
+        class="btn btn"
+      ></button>
+    </form>
+    <p><span>stars</span> {{image.likes.all.count}}</p>
+    <a href="{% url 'review' image.pk %}">post review</a>
+
+    {% for review in image.reviews.all|slice:'2' %}
+    <p>review:{{review.text}}</p>
+    {% endfor %}
+    <small>{{image.created|timesince}}</small>
+
+    {% endfor %}
+  </div>
+</div>

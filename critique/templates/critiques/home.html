@@ -165,41 +165,55 @@
   </div>
 </nav>
 
-<div class="landing-page fluid">
-  <h1>left</h1>
+<div class="container-fluid" id="landing-page">
+  <h1>Critique</h1>
+  <!-- rating functionality here -->
 </div>
 
 <div class="container">
-  <div class="content-wrapper">
+  <div class="project-title">
+    <h1>projects</h1>
+  </div>
+
+  <div class="row">
     {% for image in images %}
-    <p>{{image.profile}}</p>
-    <img src="{{image.image.url}}" alt="img.." />
-    <p>{{image.projectname}}</p>
-    <p>{{image.urls}}</p>
-    <a href="{{image.urls}}">project link</a>
-    <p>{{image.description}}</p>
+    <div class="col-s-6 col-md-4">
+      <div class="card my-2">
+        <img src="{{image.image.url}}" alt="img.." />
 
-    <form action="{% url 'like' image.pk %}">
-      {% csrf_token %}
-      <button
-        type="submit"
-        ,
-        name="project_id"
-        ,
-        value="{{ project.id }}"
-        ,
-        class="btn btn"
-      >
-        star
-      </button>
-    </form>
-    <p><span>stars</span> {{image.likes.all.count}}</p>
-    <a href="{% url 'review' image.pk %}">post review</a>
-
-    {% for review in image.reviews.all|slice:'2' %}
-    <p>review:{{review.text}}</p>
-    {% endfor %}
-    <small>{{image.created|timesince}}</small>
+        <div
+          class="card-body"
+          style="font-family: 'Poppins', sans-serif; font-size: larger"
+        >
+          <a href="{% url 'photo' image.pk  %}" class="btn btn-sm m-2"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-eye"
+            >
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle></svg
+          ></a>
+          <br />
+          <br />
+          <small class="date mt-2">{{image.created|timesince}}</small>
+          <br />
+          <small>
+            <span
+              ><img src="{{user_profile.pro_picture.url}}" alt="pro pic"</span
+            >
+            {{image.profile}} | <span> {{image.projectname}}</span></small
+          >
+        </div>
+      </div>
+    </div>
 
     {% endfor %}
   </div>
