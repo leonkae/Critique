@@ -159,8 +159,22 @@
   margin-top: 150px;
   font-size: 5vh;
 }
-.text-search{
+.text-search {
   font-size: 3vh;
   font-family: "Poppins", sans-serif;
+}
+
+.view-title h1 {
+  text-align: center;
+  font-family: "Grand Hotel", cursive;
+  margin-top: 150px;
+  font-size: 5vh;
+}
+.search-info {
+  font-family: "Poppins", sans-serif;
+  
+}
+.search-info h1{
+  font-weight: bold;
 
 }
