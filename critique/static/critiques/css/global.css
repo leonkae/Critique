@@ -89,7 +89,7 @@
   font-family: "Grand Hotel", cursive;
   margin-top: 100px;
 }
-.profile-title h2{
+.profile-title h2 {
   font-size: 6vh;
 }
 
@@ -105,25 +105,43 @@
   font-family: "Poppins", sans-serif;
 }
 
-.profile-card-info h1{
+.profile-card-info h1 {
   font-size: 5vh;
   margin-top: 10px;
 }
 
-.profile-card-info p{
+.profile-card-info p {
   margin-top: 10px;
   font-size: 3vh;
 }
 
-.bio{
+.bio {
   font-weight: bold;
   font-size: larger;
 }
 
-.profile-details h3{
+.profile-details h3 {
   font-family: "Monoton", cursive;
   text-align: center;
   text-transform: uppercase;
   margin-top: 25px;
 }
 
+.update-title h1 {
+  text-align: center;
+  font-family: "Grand Hotel", cursive;
+  margin-top: 150px;
+  font-size: 5vh;
+}
+
+.submit {
+  border: none;
+  background: none;
+}
+
+.create-container h1{
+  text-align: center;
+  font-family: "Grand Hotel", cursive;
+  margin-top: 150px;
+  font-size: 5vh;
+}

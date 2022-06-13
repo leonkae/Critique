@@ -1,8 +1,150 @@
 {% extends 'critiques/base.html' %} {% block content %}
+<nav class="navbar navbar-fluid-lg bg-light mb-5 fixed-top">
+  <!-- conatainer -->
+  <div class="container">
+    <a href="{% url 'profile' %}" class="navbar-user">{{ request.user }}</a>
+    <a href="{% url 'home'%}" class="navbar-brand">Critique</a>
+
+    <!-- navbar toggler -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navmenu"
+      style="color: white"
+    >
+      <span class="navbar-toggler-icon dark"></span>
+    </button>
+
+    <!-- main div  -->
+    <div class="collapse navbar-collapse" id="navmenu">
+      <div class="collapse navbar-collapse" id="navmenu">
+        <div class="user-name ms-3">{{ request.user }}</div>
+      </div>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-link"></a>
+        </li>
+      </ul>
+
+      <!-- search form functions -->
+      <form class="navbar-form" method="POST" action="{% url 'search' %}">
+        {% csrf_token %}
+        <div class="input-group">
+          <input
+            type="search"
+            id="search"
+            class="form-control"
+            placeholder="Search..."
+            name="searched"
+            style="border-radius: 10px; border: solid 1px white"
+          />
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <i class="glyphicon glyphicon-search"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-search"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg
+              ></i>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="create me-3 m-2">
+        <a href="{% url 'create' %}"
+          ><button class="btn btn-primary">Submit Project</button></a
+        >
+      </div>
+
+      <div class="create me-3 m-2" >
+        <a href="{% url 'signup' %}"
+          ><button class="btn btn-primary">SignUp</button></a
+        >
+      </div>
+
+      <div class="profile me-2 m-2">
+        <a href="{% url 'profile' %}">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-user"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </a>
+      </div>
+
+      <div class="login me-2 m-2">
+        <a href="{% url 'login' %}">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-log-in"
+          >
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+            <polyline points="10 17 15 12 10 7"></polyline>
+            <line x1="15" y1="12" x2="3" y2="12"></line>
+          </svg>
+        </a>
+      </div>
+
+      <div class="logout m-2">
+        <a href="{% url 'logout' %}">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-log-out"
+          >
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line></svg
+        ></a>
+      </div>
+    </div>
+  </div>
+</nav>
 
 <div class="container">
-    <a href="{% url 'home' %}">back</a>
-  <div class="card">
+  <div class="update-title">
+    <h1>Update Profile</h1>
+  </div>
+
+  <div class="card" id="update-profile-card">
     <form method="POST" action="" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="form-group m-4">
