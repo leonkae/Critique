@@ -7,9 +7,9 @@ from django.db import models
 class Profile(models.Model):
     '''profile model'''
     pro_picture =models.ImageField(upload_to ='profile/', default='')
-    bio = models.TextField(max_length=255)
+    bio = models.TextField(max_length=255, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='profile')
-    email= models.EmailField()
+    email= models.EmailField(blank=True)
     
     
     def __str__(self):

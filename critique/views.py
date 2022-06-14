@@ -6,7 +6,12 @@ from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
 from django.contrib import messages
 from .models import Reviews as ReviewsModel
+from .seriealizers import ProfileSerializer, ProjectSerializer, UserSerializer
+from rest_framework import viewsets
+from django.contrib.auth.models import User
 from .models import *
+
+
 
 # Create your views here.
 
@@ -153,3 +158,19 @@ def like(request, pk):
         
         return HttpResponseRedirect(reverse('home'))
     return redirect('home')
+
+
+
+'''serializers'''
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    
+class ProjectViewSet(viewsets.ModelViewSet):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer    
+    
