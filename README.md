@@ -26,6 +26,8 @@ Above is the landing page any usr can access this page, To use other functions l
 * GIT
 * POSTGRESS
 
+# Api link 
+* http://127.0.0.1:8000/api/
 
 
 
