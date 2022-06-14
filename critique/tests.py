@@ -10,5 +10,6 @@ class ProfileTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.profile,Profile))
         
+    def test_save_method(self):
+        self.profile.save()    
         
-    
