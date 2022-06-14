@@ -1,7 +1,4 @@
-{% extends 'critiques/base.html' %} 
-{% load static %}
-
-{% block content %}
+{% extends 'critiques/base.html' %} {% load static %} {% block content %}
 
 <nav class="navbar navbar-fluid-lg bg-light mb-5 fixed-top">
   <!-- conatainer -->
@@ -168,82 +165,111 @@
   </div>
 </nav>
 
-<div class="container-fluid" id="landing-page">
-  <h1>Critique</h1>
-
-  <!-- rating functionality here -->
+<div class="landing" id="landing-page"> 
+  <h1> Critique </h1>
 </div>
 
-<div class="container">
+<div class="container-fluid">
   <div class="project-title">
     <h1>projects</h1>
-  </div>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+  
+        <img src="{% static  'photos/drill.jpeg' %}" style="width: 100%" />
+        <div class="text">this is Critique</div>
+      </div>
 
-  <div class="row">
-    {% for image in images %}
-    <div class="col-s-6 col-md-4">
-      <div class="card my-2">
-        <img src="{{image.image.url}}" alt="img.." />
+      <div class="mySlides fade">
 
-        <div
-          class="card-body"
-          style="font-family: 'Poppins', sans-serif; font-size: larger"
-        >
-          <a href="{% url 'photo' image.pk  %}" class="btn btn-sm m-2"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-eye"
-            >
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-              <circle cx="12" cy="12" r="3"></circle></svg
-          ></a>
+        <img src="{% static 'photos/anime.jpg' %}" style="width: 100%" />
+        <div class="text">Critiques help us improve</div>
+      </div>
 
-          <a href="{% url 'review' image.pk %}"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-feather"
-            >
-              <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
-              <line x1="16" y1="8" x2="2" y2="22"></line>
-              <line x1="17.5" y1="15" x2="9" y2="15"></line></svg
-          ></a>
-
-          <br />
-          <span class="line"></span>
-          <br />
-          <small class="date mt-2">{{image.created|timesince}}</small>
-          <br />
-          <small>
-            <a href="{% url 'profile' %}">
-              <span>
-                <img src="{{image.profile.pro_picture.url}}" alt="pro pic"</span
-              >
-            </a>
-
-            <a href="{% url 'profile' %}">{{image.profile}}</a> |
-            <span>{{image.projectname}}</span></small
-          >
-        </div>
+      <div class="mySlides fade">
+v>
+        <img src="{% static 'photos/mag.jpg' %}" style="width: 100%" />
+        <div class="text">Submit projects for reviews</div>
       </div>
     </div>
+    <br />
 
-    {% endfor %}
+    <div style="text-align: center">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      {% for image in images %}
+      <div class="col-s-6 col-md-4">
+        <div class="card my-2">
+          <img src="{{image.image.url}}" alt="img.." />
+
+          <div
+            class="card-body"
+            style="font-family: 'Poppins', sans-serif; font-size: larger"
+          >
+            <a href="{% url 'photo' image.pk  %}" class="btn btn-sm m-2"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-eye"
+              >
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle></svg
+            ></a>
+
+            <a href="{% url 'review' image.pk %}"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-feather"
+              >
+                <path
+                  d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"
+                ></path>
+                <line x1="16" y1="8" x2="2" y2="22"></line>
+                <line x1="17.5" y1="15" x2="9" y2="15"></line></svg
+            ></a>
+
+            <br />
+            <span class="line"></span>
+            <br />
+            <small class="date mt-2">{{image.created|timesince}}</small>
+            <br />
+            <small>
+              <a href="{% url 'profile' %}">
+                <span>
+                  <img src="{{image.profile.pro_picture.url}}" alt="pro
+                  pic"</span
+                >
+              </a>
+
+              <a href="{% url 'profile' %}">{{image.profile}}</a> |
+              <span>{{image.projectname}}</span></small
+            >
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
   </div>
 </div>
 

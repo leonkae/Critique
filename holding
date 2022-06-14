@@ -59,7 +59,7 @@
     <div class="mySlides fade">
       <div class="numbertext">2 / 3</div>
       <img
-        src="{% static 'photos/mag.jpg' %}"
+        src=""
         style="width: 100%"
       />
       <div class="text">Critiques help us improve</div>
@@ -67,10 +67,7 @@
 
     <div class="mySlides fade">
       <div class="numbertext">3 / 3</div>
-      <img
-        src="{% static 'photos/anime.jpg' %}"
-        style="width: 100%"
-      />
+
       <div class="text">Submit projects for reviews</div>
     </div>
   </div>
@@ -81,3 +78,6 @@
     <span class="dot"></span>
     <span class="dot"></span>
   </div>
+
+
+
