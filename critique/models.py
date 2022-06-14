@@ -55,7 +55,7 @@ class Reviews(models.Model):
 class Project(models.Model):
     '''project model'''
     
-    image = models.ImageField(upload_to='media/', default='')
+    image = models.ImageField(upload_to='media/', default='image.png')
     projectname =models.CharField(max_length=100)
     description=models.CharField(max_length=255, null=False, blank=False)
     likes =models.ManyToManyField(User, related_name='critique_image')
@@ -63,7 +63,7 @@ class Project(models.Model):
     modified =models.DateTimeField(auto_now=True)
     reviews =models.ManyToManyField('Reviews',blank=True)
     urls = models.URLField()
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, default=None, null=True, blank=True, on_delete=models.CASCADE)
     
     
     
