@@ -3,7 +3,9 @@
 <nav class="navbar navbar-fluid-lg bg-light mb-5 fixed-top">
   <!-- conatainer -->
   <div class="container">
+    {% if request.user.is_authenticated %}
     <a href="{% url 'profile' %}" class="navbar-user">{{ request.user }}</a>
+    {% endif%}
     <a href="{% url 'home'%}" class="navbar-brand">Critique</a>
 
     <!-- navbar toggler -->
@@ -163,13 +165,14 @@
 </nav>
 
 <div class="container">
-
   <div class="search-title">
     <h1>Critique Search</h1>
   </div>
 
   {% if searched_object %}
-  <h2 class="text-search">found {{searched_object|length}} of searched {{message}}</h2>
+  <h2 class="text-search">
+    found {{searched_object|length}} of searched {{message}}
+  </h2>
   {% else %}
   <h2>{{message}}</h2>
   {% endif %}
@@ -227,7 +230,7 @@
         <small>
           <a href="{% url 'profile' %}">
             <span>
-              <img src="{{user_profile.pro_picture.url}}" alt="pro pic"</span
+              <img src="{{image.profile.pro_picture.url}}" alt="pro pic"</span
             >
           </a>
           <a href="{% url 'profile' %}">{{image.profile}}</a> |

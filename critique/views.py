@@ -19,9 +19,9 @@ def home(request):
     '''home view''' 
     images=Project.objects.order_by("-created").all()
     current_user = request.user
-    user_profile = get_object_or_404(Profile,user=current_user)
+    # user_profile = get_object_or_404(Profile,user=current_user)
     
-    return render(request,'critiques/home.html', {'images':images, 'user_profile':user_profile})
+    return render(request,'critiques/home.html', {'images':images})
 
 def signup(request):
     ''' signup view '''
@@ -58,7 +58,9 @@ def login_page(request):
             else:
                 messages.info(request, 'Check username or password !')
         return render(request,'critiques/login.html')
-    
+  
+  
+@login_required(login_url='login')     
 def viewproject(request,pk):
     images = Project.objects.get(id=pk)
     current_user = request.user
